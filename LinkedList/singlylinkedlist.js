@@ -17,13 +17,13 @@ function ListNode(value, right) {
     right === undefined ? this.right = null : this.right = right;
 }
 
-function addStart(head,value) {
+function addNodeStart(head,value) {
     let newNode = new ListNode(value,null)
     newNode.right = head;
     return newNode;
 }
 
-function addEnd(head,value) {
+function addNodeEnd(head,value) {
     let newNode = new ListNode(value,null);
     let current = head;
     while (current.right !== null) {
@@ -33,7 +33,7 @@ function addEnd(head,value) {
     return head;
 }
 
-function addMiddle(head, value, iteration) {
+function addNodeMiddle(head, value, iteration) {
     let newNode = new ListNode(value,null);
     let current = head;
     while (iteration !== 0 && current.right!==null) {
@@ -45,13 +45,57 @@ function addMiddle(head, value, iteration) {
     return head;
 }
 
+function deleteNodeStart(head){
+    let current = head.right;
+    return current;
+}
+
+function deleteNodeEnd(head){
+    let current = head;
+    let prev = null;
+    while(current.right!==null){
+        prev = current;
+        current = current.right;
+    }
+    prev.right = null;
+    return head;
+}
+
+function deleteAtMiddle(head,iteration){
+    let current = head;
+    let prev = null;
+    while(current.right!==null && iteration!==0){
+        prev = current;
+        current = current.right;
+        iteration--;
+    }
+    if(current.right === null && iteration>0){
+        console.log("Length is less than number of iterations");
+        return;
+    }
+
+    prev.right = current.right;
+    return head;
+}
+
+
 let head = new ListNode(20);
 
-head = addEnd(head,10);
+head = addNodeEnd(head,10);
 
-head = addStart(head,40);
+head = addNodeStart(head,40);
 
-head = addMiddle(head,30,1);
+head = addNodeStart(head,100);
+
+head = addNodeStart(head,90);
+
+head = addNodeStart(head,50);
+
+head = addNodeMiddle(head,30,1);
+
+console.log(head);
+
+head = deleteNodeStart(head);
 
 console.log(head);
 
