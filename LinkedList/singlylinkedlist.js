@@ -10,6 +10,8 @@
 
 // since no shifting operation is invloved effiency is increased.
 
+// Using singly linkedlist we can only traverse forward.
+
 function ListNode(value, right) {
     value === undefined ? this.value = 0 : this.value = value;
     right === undefined ? this.right = null : this.right = right;
