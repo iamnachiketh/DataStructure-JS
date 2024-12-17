@@ -62,3 +62,50 @@ function merge(array, low, mid, high) {
 
 // Space complexity: O(n) since at the worst case it could take n space.
 
+
+// Merge Sort in desending order
+
+
+
+dmergeSort(array,0,array.length - 1);
+
+function dmergeSort(array,low,high){
+    if(low>=high) return;
+    let mid = Math.floor((low+high)/2);
+
+    dmergeSort(array,low,mid);
+    dmergeSort(array,mid+1,high);
+    dmerge(array,low,mid,high);
+}
+
+function dmerge(array,low,mid,high){
+    let temp = [];
+
+    let left = low, right = mid + 1;
+    while (left <= mid && right <= high) {
+        if (array[left] >= array[right]) {
+            temp.push(array[left]);
+            left++;
+        }else{
+            temp.push(array[right]);
+            right++;
+        }
+    }
+
+    while(left<=mid+1){
+        temp.push(array[left]);
+        left++;
+    }
+
+    while(right <= high){
+        temp.push(array[right]);
+        right++;
+    }
+
+    for(let i = low; i<=high;i++){
+        array[i] = temp[i - low];
+    }
+}
+
+console.log(array);// Output: [ 89, 67, 45, 43, 33, 30, 29, 20, 15, 10]
+
