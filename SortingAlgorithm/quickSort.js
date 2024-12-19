@@ -31,7 +31,7 @@ function findPivot(array, low, high) {
     let i = low, j = high, pivot = array[low];
 
     while (i < j) {
-        while (array[i] <= array[pivot] && i <= high) {
+        while (array[i] <= pivot && i <= high) {
             i++;
         }
 
