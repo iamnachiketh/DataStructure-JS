@@ -31,11 +31,11 @@ function findPivot(array, low, high) {
     let i = low, j = high, pivot = array[low];
 
     while (i < j) {
-        while (array[i] <= pivot && i <= high) {
+        while (array[i] <= pivot && i <= high - 1) {
             i++;
         }
 
-        while (array[j] > pivot && j >= low) {
+        while (array[j] > pivot && j >= low + 1) {
             j--;
         }
 
